@@ -1,3 +1,4 @@
 .generators
 .rakeTasks
 .vscode
+.autoenv.leave

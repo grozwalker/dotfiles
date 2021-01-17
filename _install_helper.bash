@@ -12,7 +12,9 @@ dotfiles_install_required_packeges() {
                        libffi-dev \
                        libgdbm6 \
                        libgdbm-dev \
-                       libdb-dev
+                       libdb-dev \
+                       gpg \
+                       tmux
 
 }
 
@@ -27,11 +29,17 @@ dotfiles_install_asdf() {
     fi
 }
 
-
 dotfiles_install_gems() {
     gem install solargraph rubocop neovim
 	gem install rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
 	gem install sorbet sorbet-runtime
 	gem install haml_lint slim_lint
 	gem install brakeman reek
+}
+
+dotfiles_install_npm() {
+	npm install -g prettier eslint babel-eslint eslint-plugin-import eslint-plugin-node
+	npx install-peerdeps -g eslint-config-airbnb
+	npm install -g stylelint stylelint-config-recommended stylelint-config-standard
+	npm install -g yaml-language-server markdownlint
 }
