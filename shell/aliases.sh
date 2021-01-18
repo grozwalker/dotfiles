@@ -15,7 +15,8 @@ alias mv='mv -i'
 alias gag='git exec ag'
 alias push='git push -u origin $(git rev-parse --abbrev-ref HEAD) $@'
 alias rebase='git pull --no-edit origin $(git rev-parse --abbrev-ref HEAD) --rebase --ff-only'
-
+alias gs='git switch $@'
+alias gsc='git switch -c $@'
 
 # Update dotfiles
 dfu() {
