@@ -51,6 +51,8 @@
 
 [user]
 	useConfigOnly = true
+	name = Andrey Grozs
+	email = grozwalker@gmail.com
 
 [http]
 	cookieFile = ~/.gitcookies

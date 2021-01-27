@@ -14,7 +14,8 @@ dotfiles_install_required_packeges() {
                        libgdbm-dev \
                        libdb-dev \
                        gpg \
-                       tmux
+                       tmux \
+                       xclip
 
 }
 

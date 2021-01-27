@@ -18,6 +18,20 @@ alias rebase='git pull --no-edit origin $(git rev-parse --abbrev-ref HEAD) --reb
 alias gs='git switch $@'
 alias gsc='git switch -c $@'
 
+# tmux aliases
+alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
+# Attaches tmux to the last session; creates a new session if none exists.
+alias t='tmux attach || tmux new-session'
+
+# Attaches tmux to a session (example: ta portal)
+alias ta='tmux attach -t'
+
+# Creates a new session
+alias tn='tmux new-session'
+
+# Lists all ongoing sessions
+alias tls='tmux list-sessions'
+
 # Update dotfiles
 dfu() {
     (
