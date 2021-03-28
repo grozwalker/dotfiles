@@ -3,23 +3,27 @@
       create: true
       relink: true
 
-- clean: ['~']
+- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
 
 - shell:
   - command: source ./_install_helper.bash; dotfiles_install_required_packeges
     description: Installing required packeges for ruby build
     stdout: true
 
-  - command: source ./_install_helper.bash; dotfiles_install_required_packeges
-    description: Installing asdf
-    stdout: true
+  # - command: source ./_install_helper.bash; dotfiles_install_required_packeges
+  #   description: Installing asdf
+  #   stdout: true
 
-  - command: source ./_install_helper.bash; dotfiles_install_gems
-    description: Installing gems
-    stdout: true
+  # - command: source ./_install_helper.bash; dotfiles_install_gems
+  #   description: Installing gems
+  #   stdout: true
 
-  - command: source ./_install_helper.bash; dotfiles_install_npm
-    description: Installing npm
+  # - command: source ./_install_helper.bash; dotfiles_install_npm
+  #   description: Installing npm
+  #   stdout: true
+
+  - command: source ./_install_helper.bash; dotfiles_install_oh_my_zsh; dotfiles_change_shell
+    description: Installing oh-my-zsh
     stdout: true
 
 - asdf:
@@ -38,6 +42,16 @@
     ~/.gitignore_global:
     ~/.shell:
     ~/.tmux.conf:
+    ~/.zsh:
+    ~/.zshrc:
+      force: true
+      path: zshrc
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - git submodule sync --recursive
+  # the following have to run after linking ~/.gitconfig
+  - git submodule update --init --recursive
+  - >
+    git clean -fdx -f
+    shell/plugins/
+    zsh/plugins/
