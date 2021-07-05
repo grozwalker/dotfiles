@@ -41,3 +41,7 @@ fi
 if [ -f ~/.zshrc_local_after ]; then
     source ~/.zshrc_local_after
 fi
+
+source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
+
+. $HOME/.asdf/asdf.sh

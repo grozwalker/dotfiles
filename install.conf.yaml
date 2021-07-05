@@ -10,17 +10,17 @@
     description: Installing required packeges for ruby build
     stdout: true
 
-  # - command: source ./_install_helper.bash; dotfiles_install_required_packeges
-  #   description: Installing asdf
-  #   stdout: true
+  - command: source ./_install_helper.bash; dotfiles_install_asdf
+    description: Installing asdf
+    stdout: true
 
-  # - command: source ./_install_helper.bash; dotfiles_install_gems
-  #   description: Installing gems
-  #   stdout: true
+  - command: source ./_install_helper.bash; dotfiles_install_gems
+    description: Installing gems
+    stdout: true
 
-  # - command: source ./_install_helper.bash; dotfiles_install_npm
-  #   description: Installing npm
-  #   stdout: true
+  - command: source ./_install_helper.bash; dotfiles_install_npm
+    description: Installing npm
+    stdout: true
 
   - command: source ./_install_helper.bash; dotfiles_install_oh_my_zsh; dotfiles_change_shell
     description: Installing oh-my-zsh
@@ -29,9 +29,9 @@
 - asdf:
   - plugin: ruby
     url: https://github.com/asdf-vm/asdf-ruby.git
-    global: 2.7.2
+    global: 3.0.1
     versions:
-      - 2.7.2
+      - 3.0.1
 
 - link:
     ~/.bash:
