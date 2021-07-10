@@ -3,9 +3,11 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
-
 - shell:
+  - command: rm -rf  ~/.oh-my-zsh/custom/
+    description: Clean oh-my-zsh/custom/
+    stdout: true
+
   - command: source ./_install_helper.bash; dotfiles_install_required_packeges
     description: Installing required packeges for ruby build
     stdout: true
@@ -22,8 +24,16 @@
     description: Installing npm
     stdout: true
 
-  - command: source ./_install_helper.bash; dotfiles_install_oh_my_zsh; dotfiles_change_shell
+  - command: source ./_install_helper.bash; dotfiles_install_oh_my_zsh;
     description: Installing oh-my-zsh
+    stdout: true
+
+  - command: source ./_install_helper.bash; dotfiles_install_plugins;
+    description: Installing zsh plugins
+    stdout: true
+
+  - command: source ./_install_helper.bash; dotfiles_change_shell;
+    description: Change default shell to zsh
     stdout: true
 
 - asdf:
