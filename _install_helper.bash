@@ -1,34 +1,74 @@
 #!/usr/bin/env bash
 
-dotfiles_install_required_packeges() {
-    apt-get install -y autoconf \
-                         zsh
-    #                    bison \
-    #                    build-essential \
-    #                    libssl-dev \
-    #                    libyaml-dev \
-    #                    libreadline6-dev \
-    #                    zlib1g-dev \
-    #                    libncurses5-dev \
-    #                    libffi-dev \
-    #                    libgdbm6 \
-    #                    libgdbm-dev \
-    #                    libdb-dev \
-    #                    gpg \
-    #                    tmux \
-    #                    xclip
+dotfiles_install_required_packages() {
+    curl -sL https://deb.nodesource.com/setup_16.x | bash -
+
+    apt update && apt install -yqq  autoconf \
+                                    zsh \
+                                    bison \
+                                    build-essential \
+                                    libssl-dev \
+                                    libyaml-dev \
+                                    libreadline6-dev \
+                                    zlib1g-dev \
+                                    libncurses5-dev \
+                                    libffi-dev \
+                                    libgdbm6 \
+                                    libgdbm-dev \
+                                    libdb-dev \
+                                    nodejs \
+                                    gpg \
+                                    tmux \
+                                    xclip
 
 }
 
+dotfiles_install_packages_for_cloud_development() {
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    curl https://baltocdn.com/helm/signing.asc | apt-key add -
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+    apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com focal main"
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+    apt update && apt install -yqq  kubectl \
+                                    helm \
+                                    kubectl \
+                                    google-cloud-sdk \
+                                    terraform
+
+
+#     apt update
+#     apt install -yqq
+# install-helm:
+
+#     apt install -yqq apt-transport-https
+
+#     apt update
+#     apt install -yqq helm
+# install-gcloud:
+#     apt install apt-transport-https ca-certificates gnupg
+
+
+#     apt update && apt install -yqq google-cloud-sdk
+
+#     apt update && apt install -yqq terraform
+}
+
 dotfiles_install_asdf() {
-    # echo "Checking if 'asdf' is already installed..."
-    if [[ ! -d ~/.asdf ]]; then
-        echo "Installing 'asdf'..."
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
-    else
-        echo "'asdf' is already install... skipping"
-        return 0
-    fi
+  echo "Checking if 'asdf' is already installed..."
+
+  if [[ ! -d ~/.asdf ]]; then
+    echo "Installing 'asdf'..."
+    mkdir ~/.asdf
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+  else
+    echo "'asdf' is already install... skipping"
+    return 0
+  fi
 }
 
 dotfiles_install_gems() {
@@ -48,15 +88,13 @@ dotfiles_install_npm() {
 
 dotfiles_install_oh_my_zsh() {
   echo "Installing 'zsh'..."
-  # Check if oh-my-zsh is installed
+
   OMZDIR="$HOME/.oh-my-zsh"
-  # rm -rf $OMZDIR
   if [ ! -d "$OMZDIR" ]; then
     echo 'Installing oh-my-zsh'
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   else
-    # echo 'Updating oh-my-zsh'
-    # upgrade_oh_my_zsh
+    echo 'Zsh already installed'
   fi
 }
 

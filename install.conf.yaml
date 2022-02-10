@@ -8,7 +8,11 @@
     description: Clean oh-my-zsh/custom/
     stdout: true
 
-  - command: source ./_install_helper.bash; dotfiles_install_required_packeges
+  - command: source ./_install_helper.bash; dotfiles_install_required_packages
+    description: Installing required packeges for cloud development
+    stdout: true
+
+  - command: source ./_install_helper.bash; dotfiles_install_packages_for_cloud_development
     description: Installing required packeges for ruby build
     stdout: true
 
