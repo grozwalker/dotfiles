@@ -17,6 +17,7 @@ dotfiles_install_required_packages() {
                                     libgdbm-dev \
                                     libdb-dev \
                                     nodejs \
+                                    snapd \
                                     gpg \
                                     tmux \
                                     xclip
@@ -39,6 +40,8 @@ dotfiles_install_packages_for_cloud_development() {
                                     kubectl \
                                     google-cloud-sdk \
                                     terraform
+
+    snap install doctl
 }
 
 dotfiles_install_asdf() {
