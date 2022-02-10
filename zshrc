@@ -32,6 +32,8 @@ source ~/.zsh/prompt.zsh
 # External plugins (initialized after)
 source ~/.zsh/plugins_after.zsh
 
+source ~/.autoenv/activate.sh
+
 # Allow local customizations in the ~/.shell_local_after file
 if [ -f ~/.shell_local_after ]; then
     source ~/.shell_local_after
@@ -42,6 +44,6 @@ if [ -f ~/.zshrc_local_after ]; then
     source ~/.zshrc_local_after
 fi
 
-source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
+# source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
 
 . $HOME/.asdf/asdf.sh

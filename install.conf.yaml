@@ -40,6 +40,10 @@
     description: Change default shell to zsh
     stdout: true
 
+  - command: source ./_install_helper.bash; dotfiles_install_autoenv;
+    description: Installing autoenv
+    stdout: true
+
 - asdf:
   - plugin: ruby
     url: https://github.com/asdf-vm/asdf-ruby.git

@@ -39,23 +39,6 @@ dotfiles_install_packages_for_cloud_development() {
                                     kubectl \
                                     google-cloud-sdk \
                                     terraform
-
-
-#     apt update
-#     apt install -yqq
-# install-helm:
-
-#     apt install -yqq apt-transport-https
-
-#     apt update
-#     apt install -yqq helm
-# install-gcloud:
-#     apt install apt-transport-https ca-certificates gnupg
-
-
-#     apt update && apt install -yqq google-cloud-sdk
-
-#     apt update && apt install -yqq terraform
 }
 
 dotfiles_install_asdf() {
@@ -72,18 +55,19 @@ dotfiles_install_asdf() {
 }
 
 dotfiles_install_gems() {
-  gem install solargraph rubocop neovim
-	gem install rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
-	gem install sorbet sorbet-runtime
-	gem install haml_lint slim_lint
-	gem install brakeman reek
+  gem install solargraph rubocop neovim \
+              rubocop-rspec rubocop-rails rubocop-performance rubocop-rake \
+              sorbet sorbet-runtime \
+              haml_lint slim_lint \
+              brakeman reek
 }
 
 dotfiles_install_npm() {
-	npm install -g prettier eslint babel-eslint eslint-plugin-import eslint-plugin-node
-	npx install-peerdeps -g eslint-config-airbnb
-	npm install -g stylelint stylelint-config-recommended stylelint-config-standard
-	npm install -g yaml-language-server markdownlint
+	npm install -g  prettier eslint babel-eslint eslint-plugin-import eslint-plugin-node \
+                  stylelint stylelint-config-recommended stylelint-config-standard \
+                  yaml-language-server markdownlint
+
+  npx install-peerdeps -g eslint-config-airbnb
 }
 
 dotfiles_install_oh_my_zsh() {
@@ -114,4 +98,15 @@ dotfiles_install_plugins() {
   # Install zsh plugins
   echo "Install zsh plugins"
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+}
+
+dotfiles_install_autoenv() {
+  # Install zsh plugins
+    AUTOENVDIR="$HOME/.autoenv"
+  if [ ! -d "$AUTOENVDIR" ]; then
+    echo "Install autoenv"
+    git clone git://github.com/inishchith/autoenv.git $AUTOENVDIR
+  else
+    echo 'Autoenv installed'
+  fi
 }
