@@ -5,5 +5,8 @@
 .autoenv.zsh
 .autoenv
 *.sql
+**/*.sql
 *.gz
+**/*.gz
 *.pgsql
+**/*.pgsql
