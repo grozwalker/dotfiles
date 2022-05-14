@@ -3,3 +3,4 @@
 .vscode
 .autoenv.leave
 .autoenv.zsh
+.autoenv
