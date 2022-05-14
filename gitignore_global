@@ -4,3 +4,6 @@
 .autoenv.leave
 .autoenv.zsh
 .autoenv
+*.sql
+*.gz
+*.pgsql
