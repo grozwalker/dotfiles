@@ -7,6 +7,8 @@ export ZSH=$HOME/.oh-my-zsh
 export AUTOENV_ENV_FILENAME=.autoenv
 export AUTOENV_ENV_LEAVE_FILENAME=.autoenv.leave
 
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

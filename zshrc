@@ -47,3 +47,9 @@ fi
 # source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
 
 . $HOME/.asdf/asdf.sh
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/root/yandex-cloud/path.bash.inc' ]; then source '/root/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/root/yandex-cloud/completion.zsh.inc' ]; then source '/root/yandex-cloud/completion.zsh.inc'; fi

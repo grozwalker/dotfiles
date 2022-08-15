@@ -48,3 +48,5 @@ function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 
 
 export HISTCONTROL=ignoreboth:erasedups
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True

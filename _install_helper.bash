@@ -39,6 +39,7 @@ dotfiles_install_packages_for_cloud_development() {
                                     helm \
                                     kubectl \
                                     google-cloud-sdk \
+                                    google-cloud-sdk-gke-gcloud-auth-plugin \
                                     terraform
 
     snap install doctl
